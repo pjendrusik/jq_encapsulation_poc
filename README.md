@@ -30,13 +30,13 @@ jQueryValidator not loaded
 
 Self-invoking scope, injected jq162
 
-Injected version1.6.2
+Injected version ($): 1.6.2
 
 jQueryValidator not loaded 
 
 
 Self-invoking scope, injected global jQuery
 
-Injected version1.10.2
+Injected version ($): 1.10.2
 
 jQueryValidator loaded 
