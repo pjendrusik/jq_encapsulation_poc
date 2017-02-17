@@ -1,0 +1,1 @@
+Example how to handle two different versions of jQuery loaded at the same time on single page.
