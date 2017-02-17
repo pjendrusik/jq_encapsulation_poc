@@ -60,7 +60,7 @@
 
     (function ($) {
         $log.append("<h3>Self-invoking scope, injected instance of jq162 </h3>");
-        $log.append("Injected version" + $.fn.jquery + "<br>");
+        $log.append("Injected version ($): " + $.fn.jquery + "<br>");
         if (typeof $.validator !== 'undefined') {
             $log.append("jQueryValidator loaded <br>");
         } else {
@@ -72,7 +72,7 @@
 
     (function ($) {
         $log.append("<h3>Self-invoking scope, injected global jQuery </h3>");
-        $log.append("Injected version" + $.fn.jquery + "<br>");
+        $log.append("Injected version ($): " + $.fn.jquery + "<br>");
         if (typeof $.validator !== 'undefined') {
             $log.append("jQueryValidator loaded <br>");
         } else {
