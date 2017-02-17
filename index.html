@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery.noConflict demo</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+</head>
+<body>
+<div id="log"></div>
+
+<script>
+    var $log = $("#log");
+
+    $log.append("<h3>jQuery from header is loaded - global scope</h3>");
+    $log.append("1nd loaded jQuery version ($): " + $.fn.jquery + "<br>");
+
+    if (typeof $.validator !== 'undefined') {
+        $log.append("jQueryValidator loaded <br>");
+    } else {
+        $log.append("jQueryValidator not loaded <br>");
+    }
+
+</script>
+
+<script src="https://code.jquery.com/jquery-1.6.2.js"></script>
+
+<script>
+    $log.append("<h3>Secondary jQuery loaded, before $.noConflict(true) - global scope</h3>");
+    $log.append("2nd loaded jQuery version ($): " + $.fn.jquery + "<br>");
+
+    if (typeof $.validator !== 'undefined') {
+        $log.append("jQueryValidator loaded <br>");
+    } else {
+        $log.append("jQueryValidator not loaded <br>");
+    }
+
+    $log.append("<h3>$.noConflict(true) is called - global scope</h3>");
+
+    var jq162 = jQuery.noConflict(true);
+
+    $log.append("<h3>After $.noConflict(true) - global scope</h3>");
+    $log.append("1st loaded jQuery version ($): " + $.fn.jquery + "<br>");
+
+    if (typeof $.validator !== 'undefined') {
+        $log.append("jQueryValidator loaded <br>");
+    } else {
+        $log.append("jQueryValidator not loaded <br>");
+    }
+
+    $log.append("<br>2nd loaded jQuery version (jq162): " + jq162.fn.jquery + "<br>");
+
+    if (typeof jq162.validator !== 'undefined') {
+        $log.append("jQueryValidator loaded <br>");
+    } else {
+        $log.append("jQueryValidator not loaded <br>");
+    }
+
+    $log.append("<br><br>");
+
+    (function ($) {
+        $log.append("<h3>Self-invoking scope, injected instance of jq162 </h3>");
+        $log.append("Injected version" + $.fn.jquery + "<br>");
+        if (typeof $.validator !== 'undefined') {
+            $log.append("jQueryValidator loaded <br>");
+        } else {
+            $log.append("jQueryValidator not loaded <br>");
+        }
+    })(jq162);
+
+    $log.append("<br><br>");
+
+    (function ($) {
+        $log.append("<h3>Self-invoking scope, injected global jQuery </h3>");
+        $log.append("Injected version" + $.fn.jquery + "<br>");
+        if (typeof $.validator !== 'undefined') {
+            $log.append("jQueryValidator loaded <br>");
+        } else {
+            $log.append("jQueryValidator not loaded <br>");
+        }
+    })(jQuery);
+
+
+</script>
+
+</body>
+</html>
